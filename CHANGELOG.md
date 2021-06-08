@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 07/06/2021 Feature Desdoblar app
+
+Construyo el programa authentication que permite autorizar el acceso a por medio de una credencial y guardar un token.
+
+La ruta donde se encuentran los archivos ````credential.json``` y ```token.json``` se define en la variable de entorno ```GOOGLE_AUTH_SESSION_PATH```
+
+Por ejemplo: 
+
+``` bash
+export GOOGLE_AUTH_SESSION_PATH=P:/vyra/vyra-migration-database
+```
+
+Se requiere que previamente exista el archivo de credenciales antes de generar el token.
+
 ## 06/06/2021 Feature Prueba de conexión a spreadsheets
 
 Realice una conexión de prueba para recuperar datos del maestro de clientes.

@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"path"
 	"rayquen/vyra/vyramigrationdatabase/google/auth/spreadsheets"
 
 	"golang.org/x/oauth2"
@@ -14,7 +15,11 @@ import (
 const TOKEN_FILENAME = "token.json"
 
 func GetToken() (*oauth2.Token, error) {
-	f, err := os.Open(TOKEN_FILENAME)
+
+	tokenPath := os.Getenv(ENV_AUTH_SESSION_PATH)
+	tokenPath = path.Clean(tokenPath)
+
+	f, err := os.Open(path.Join(tokenPath, TOKEN_FILENAME))
 	if err != nil {
 		return nil, err
 	}
@@ -40,7 +45,10 @@ func RequestToken() error {
 
 	token := getTokenFromWeb(config)
 
-	saveToken(TOKEN_FILENAME, token)
+	tokenPath := os.Getenv(ENV_AUTH_SESSION_PATH)
+	tokenPath = path.Clean(tokenPath)
+
+	saveToken(path.Join(tokenPath, TOKEN_FILENAME), token)
 
 	return nil
 }
