@@ -9,6 +9,8 @@ import (
 	"golang.org/x/oauth2"
 )
 
+const ENV_AUTH_SESSION_PATH = "GOOGLE_AUTH_SESSION_PATH"
+
 func Authenticate() (*api.GoogleAPI, error) {
 	cred, err := GetCredential()
 	if err != nil {
